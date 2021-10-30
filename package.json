@@ -1,0 +1,14 @@
+{
+  "name": "warship-crawl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^10.4.0"
+  }
+}
