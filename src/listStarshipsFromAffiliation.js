@@ -1,10 +1,6 @@
 const Puppeteer = require('puppeteer');
 const fs = require('fs');
 const LINKS = require('./affiliationsLinks.json')
-// const LINKS = [{
-// 	"link": "https://starwars.fandom.com/wiki/Category:Airam_starships",
-// 	"name": "Category:Airam starships"
-// },]
 
 async function run() {
 	const browser = await Puppeteer.launch()
