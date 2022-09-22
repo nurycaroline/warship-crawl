@@ -5,11 +5,10 @@ const { setShipToNotion } = require('./service/notion')
 async function run() {
 	const browser = await Puppeteer.launch()
 
-	const starships = await Promise.all(
-		LINKS.map(async (link) => {
+	await Promise.all(
+		LINKS.forEach(async (link) => {
 			const page = await browser.newPage()
 			await page.goto(link, { timeout: 0 })
-			console.log('Open New Page')
 
 			const ship = await page.evaluate((props) => {
 				const aside = document.querySelector('.mw-parser-output aside')
@@ -60,17 +59,10 @@ async function run() {
 				link,
 				...ship,
 			})
-
-			return {
-				link,
-				...ship,
-			}
 		})
 	)
 
 	await browser.close()
-
-	return starships
 }
 
 run()
