@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@notionhq/client": "^2.2.0",
+    "dotenv": "^16.0.2",
     "puppeteer": "^10.4.0"
   }
 }

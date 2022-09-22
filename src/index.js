@@ -1,6 +1,6 @@
 const Puppeteer = require('puppeteer');
-const fs = require('fs');
 const LINKS = require('./links');
+const { setShipToNotion } = require('./service/notion')
 
 async function run() {
 	const browser = await Puppeteer.launch()
@@ -8,7 +8,8 @@ async function run() {
 	const starships = await Promise.all(
 		LINKS.map(async (link) => {
 			const page = await browser.newPage()
-			await page.goto(link)
+			await page.goto(link, { timeout: 0 })
+			console.log('Open New Page')
 
 			const ship = await page.evaluate((props) => {
 				const aside = document.querySelector('.mw-parser-output aside')
@@ -55,7 +56,7 @@ async function run() {
 				}
 			})
 
-			console.log({
+			await setShipToNotion({
 				link,
 				...ship,
 			})
@@ -68,9 +69,6 @@ async function run() {
 	)
 
 	await browser.close()
-
-	let data = JSON.stringify(starships);
-	fs.writeFileSync('starships.json', data);
 
 	return starships
 }
