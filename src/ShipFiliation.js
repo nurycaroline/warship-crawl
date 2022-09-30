@@ -25,7 +25,7 @@ async function run() {
 	})
 
 	// let data = JSON.stringify(links);
- 	// fs.writeFileSync('./links.json', data);s
+ 	// fs.writeFileSync('./links.json', data);
 
 	await browser.close()
 }
